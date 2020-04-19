@@ -4,8 +4,7 @@
 #include "BitHacks.h"
 
 using namespace std;
-
-
+using namespace BitHacks;
 
 
 
