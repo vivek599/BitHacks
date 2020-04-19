@@ -302,7 +302,7 @@ namespace BitHacks
 	// Iterative solution to calculate 
 	// pow(x, n) using
 	// binary operators
-	int BitPower(int x, unsigned int n)
+	int BitPow(int x, unsigned int n)
 	{
 		// initialize result by 1
 		int power = 1;
@@ -345,6 +345,51 @@ namespace BitHacks
 		return n;
 	}
 	
+	int BitHammingDistance( int x, int y )
+	{
+		int r = x ^ y;
+
+		int setbits = 0;
+
+		while (r > 0) 
+		{
+			setbits += x & 1;
+			r >>= 1;
+		}
+
+		return setbits;
+	}
+
+	unsigned int BitCount(unsigned int n)
+	{
+		unsigned int count = 0;
+		while (n) 
+		{
+			count ++;
+			n >>= 1;
+		}
+
+		return count;
+	}
+
+	string BitToBinary(int n) 
+	{
+		string str = "";
+
+		int length = BitCount(n);
+
+		str.resize(length);
+
+		int i;
+		for (i = length - 1; i >= 0; i--)
+		{
+			str[i] = (n & 1) ? '1' : '0';
+			n >>= 1;
+		}
+
+		return str;
+	}
+
 }
 
 

@@ -33,6 +33,11 @@ int main()
 
 	cout << " square of 64 " << BitSquare(64) << endl;
 
+	cout << "hammingDistance between 1001 and 1110 64 " << BitHammingDistance(9, 14) << endl;
+
+	cout << " A : " << BitToBinary('A') << endl;
+	cout << " a : " << BitToBinary('a') << endl;
+	cout << " space : " << BitToBinary(' ') << endl;
 
 	system("pause");
 
