@@ -1,12 +1,18 @@
 #pragma once
  
- 
+#include <assert.h> 
+
+#include <string>
+#include <queue>
+
+using namespace std;
+
 bool IsOdd( int n )
 {
 	return n & 1;
 }
 
-bool IsOppositeSign(int x, int y)
+bool BitIsOppositeSign(int x, int y)
 {
 	return ((x ^ y) < 0);
 }
@@ -153,7 +159,7 @@ unsigned int bitAbs( int n )
 }
 
 // return true if binary representation of n is a palindrome
-bool IsBinaryPalindrome(unsigned int n)
+bool BitIsBinaryPalindrome(unsigned int n)
 {
 	// rev stores reverse of binary representation of n
 	unsigned reverse = 0;
@@ -182,7 +188,7 @@ int BitMax(int x, int y)
 }
 
 //Round this 32-bit value to the next highest power of 2
-unsigned int RoundToPowerOf2(unsigned int n)
+unsigned int BitRoundToPowerOf2(unsigned int n)
 {
 
 	if (n <= 1)
@@ -197,7 +203,7 @@ unsigned int RoundToPowerOf2(unsigned int n)
 	return t << (t < n);
 }
 
-unsigned int RoundToPowerOf2(int n)
+unsigned int BitRoundToPowerOf2_1(unsigned int n)
 {
 	n--;
 	n |= n >> 1;
@@ -215,10 +221,98 @@ bool HasAnyZeroByte(int n)
 	return ~((((n & 0x7F7F7F7F) + 0x7F7F7F7F) | n) | 0x7F7F7F7F);
 }
 
+int BitDivide(int x, int y)
+{
+	assert(y != 0);
 
+	// store sign of the result
+	int sign = 1;
+	if (x * y < 0)
+		sign = -1;
 
+	// convert both dividend and divisor to positive
+	x = abs(x);
+	y = abs(y);
 
+	// initialize quotient by 0
+	int quotient = 0;
 
+	// loop till dividend x is more than the divisor y
+	while (x >= y)
+	{
+		x = x - y;		// perform reduction on dividend
+		quotient++;		// increase quotient by 1
+	}
+
+	//Remainder is x
+
+	return sign * quotient;
+}
+
+bool IsPowerOf8(unsigned int n)
+{
+	// set bit is present at (0, 3, 6, ... ) position
+	return n && !(n & (n - 1)) && !(n & 0xB6DB6DB6);
+}
+
+// Function to generate 
+// binary numbers between 1 to N 
+// using queue data structure
+void GenerateBinaryNumbers(int n)
+{
+	// create an empty Queue and push 1 to it
+	queue<string> q;
+	q.push("1");
+
+	// run n times
+	int i = 1;
+	while (i++ <= n)
+	{
+		// append 0 and 1 to the front element of the queue and
+		// enqueue both strings
+		q.push(q.front() + "0");
+		q.push(q.front() + "1");
+
+		// print the front element and dequeue from the queue
+		cout << q.front() << ' ';
+		q.pop();
+	}
+}
+
+// Iterative solution to calculate 
+// pow(x, n) using
+// binary operators
+int BitPower(int x, unsigned int n)
+{
+	// initialize result by 1
+	int power = 1;
+
+	while (n)
+	{
+		if (n & 1)
+			power *= x;
+
+		n = n >> 1;
+
+		x = x * x;
+	}
+
+	return power;
+}
+
+int BitSquare(int num)
+{
+	if (num < 2)
+	{
+		return num;
+	}
+
+	num = abs(num);
+
+	int i = num >> 1;
+
+	return (num & 1) ? ((BitSquare(i) << 2) + (i << 2) + 1) : (BitSquare(i) << 2);
+}
 
 
 
