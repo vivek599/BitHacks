@@ -14,6 +14,7 @@ using namespace std;
 int main()
 {
 
+	cout << " previous power of 2 of 748 is " << BitFloorToPowerOf2(748) << endl;
 	cout << " next power of 2 of 748 is " << BitRoundToPowerOf2(748) << endl;
 	cout << " next power of 2 of 748 is " << BitRoundToPowerOf2_1(748) << endl;
 

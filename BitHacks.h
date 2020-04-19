@@ -314,7 +314,16 @@ int BitSquare(int num)
 	return (num & 1) ? ((BitSquare(i) << 2) + (i << 2) + 1) : (BitSquare(i) << 2);
 }
 
+// compute power of two less than or equal to n
+unsigned BitFloorToPowerOf2(unsigned int n)
+{
+	// do till only one bit is left
+	while (n & n - 1)
+		n = n & n - 1;	// unset rightmost bit
 
+	// n is now a power of two (less than or equal to n)
+	return n;
+}
 
 
 
