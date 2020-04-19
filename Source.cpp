@@ -39,6 +39,10 @@ int main()
 	cout << " a : " << BitToBinary('a') << endl;
 	cout << " space : " << BitToBinary(' ') << endl;
 
+	cout << " Flip 7 : " << BitToBinary( BitFlip(7) ) << endl;
+
+	cout << " Bit 4 of 45 is " << BitAt(45, 4) << "  "<< BitToBinary(45) << endl;
+
 	system("pause");
 
 	return 0;

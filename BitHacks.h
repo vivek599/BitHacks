@@ -372,6 +372,28 @@ namespace BitHacks
 		return count;
 	}
 
+	int BitFlip(int n)
+	{
+		return ~n;
+	}
+	
+	int BitAt(int n, int position) 
+	{
+		return ((n & (1 << position-1)) != 0);
+	}
+
+	int BitSet(int n, int position)
+	{
+		int mask = 1 << position;
+		return n | mask;
+	}
+
+	int BitUnset(int n, int position)
+	{
+		int mask = 1 << position;
+		return n & ~mask;
+	}
+
 	string BitToBinary(int n) 
 	{
 		string str = "";
