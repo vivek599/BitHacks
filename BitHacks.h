@@ -6,12 +6,12 @@ bool IsOdd( int n )
 	return n & 1;
 }
 
-bool isOfOppositeSign(int x, int y)
+bool IsOppositeSign(int x, int y)
 {
 	return ((x ^ y) < 0);
 }
 
-int AddOne(int n)
+int BitAddOne(int n)
 {
 	return  -~n;
 }
@@ -27,31 +27,31 @@ void swap(int& x, int& y)
 }
 
 // Function to turn on k'th bit in n
-int turnOnKthBit(int n, int k)
+int TurnOnKthBit(int n, int k)
 {
 	return n | (1 << (k - 1));
 }
 
 // Function to turn off k'th bit in n
-int turnOffKthBit(int n, int k)
+int TurnOffKthBit(int n, int k)
 {
 	return n & ~(1 << (k - 1));
 }
 
 // Function to check if k'th bit is set for n or not
-bool isKthBitset(int n, int k)
+bool IsKthBitset(int n, int k)
 {
 	return n & (1 << (k - 1));
 }
 
 // Function to toggle k'th bit of n
-int toggleKthBit(int n, int k)
+int ToggleKthBit(int n, int k)
 {
 	return n ^ (1 << (k - 1));
 }
 
 // returns position of the rightmost set bit of n
-int rightmostSetBitPos(int n)
+int RightmostSetBitPos(int n)
 {
 	// if number is odd, return 1
 	if (n & 1)
@@ -71,9 +71,14 @@ int rightmostSetBitPos(int n)
 	return pos;
 }
 
+// bool IsPowerOf2(int n)
+// {
+// 	return !(n & (n - 1));
+// }
+
 bool IsPowerOf2(int n)
 {
-	return !(n & (n - 1));
+	return n && !(n & (n - 1));
 }
 
 // returns position of the only set bit of n
@@ -82,7 +87,7 @@ int setBitPos(int n)
 	// unset rightmost bit and check if the number is non-zero
 	if (n & (n - 1))
 	{
-		cout << "Wrong input";
+		//"Wrong input";
 		return 1;
 	}
 
@@ -92,7 +97,7 @@ int setBitPos(int n)
 // find parity of number n
 // Parity 1 - odd nums of 1
 // Parity 0 - even nums of 1
-unsigned int findParity(unsigned int n)
+unsigned int FindParity(unsigned int n)
 {
 	bool parity = false;
 
@@ -109,28 +114,27 @@ unsigned int findParity(unsigned int n)
 	return parity;
 }
 
-char UpperToLower(char c)
+char BitUpperToLower(char c)
 {
 	return (c >= 'A' || c <= 'Z') ? c | ' ' : c;
 }
 
-char LowerToUpper(char c)
+char BitLowerToUpper(char c)
 {
 	return (c >= 'a' || c <= 'z') ? c & '_' : c;
 }
 
-
-char ToUpper(char c)
+char BitToUpper(char c)
 {
 	return c & '_';
 }
 
-char ToLower(char c)
+char BitToLower(char c)
 {
 	return c | ' ';
 }
 
-char ToggleCase(char c)
+char BitToggleCase(char c)
 {
 	return c ^ ' ';
 }
@@ -149,7 +153,7 @@ unsigned int bitAbs( int n )
 }
 
 // return true if binary representation of n is a palindrome
-bool isBinaryPalindrome(unsigned int n)
+bool IsBinaryPalindrome(unsigned int n)
 {
 	// rev stores reverse of binary representation of n
 	unsigned reverse = 0;
@@ -167,18 +171,18 @@ bool isBinaryPalindrome(unsigned int n)
 	return n == reverse;
 }
 
-int bitMin(int x, int y)
+int BitMin(int x, int y)
 {
 	return y ^ ((x ^ y) & -(x < y));
 }
 
-int bitMax(int x, int y)
+int BitMax(int x, int y)
 {
 	return x ^ ((x ^ y) & -(x < y));
 }
 
 //Round this 32-bit value to the next highest power of 2
-unsigned int RoundToPowerOf2(int n)
+unsigned int RoundToPowerOf2(unsigned int n)
 {
 
 	if (n <= 1)
@@ -206,16 +210,10 @@ unsigned int RoundToPowerOf2(int n)
 	return n;
 }
 
-bool hasAnyZeroByte(int n)
+bool HasAnyZeroByte(int n)
 {
-	return ~((((v & 0x7F7F7F7F) + 0x7F7F7F7F) | v) | 0x7F7F7F7F);
+	return ~((((n & 0x7F7F7F7F) + 0x7F7F7F7F) | n) | 0x7F7F7F7F);
 }
-
-bool IsPowerOf2(int n)
-{
-	return n && !(n & (n - 1));
-}
-
 
 
 
