@@ -39,6 +39,18 @@ namespace BitHacks
 			x = x ^ y;
 		}
 	}
+
+	int BitNumOne(int n)
+	{
+		int count = 0;
+		while (n)
+		{
+			n = n & (n - 1);
+			count++;
+		}
+
+		return count;
+	}
 	
 	// Function to turn on k'th bit in n
 	int TurnOnKthBit(int n, int k)
